@@ -5,7 +5,7 @@ import time
 
 from random_walk import RandomWalk
 
-rw = RandomWalk(5000)
+rw = RandomWalk(10000)
 
 plt.ion()
 
@@ -15,7 +15,8 @@ sc = ax.scatter(rw.x_values, rw.y_values, c = [1], cmap = plt.cm.Blues, s = 10)
 
 plt.xlim(-1, 1)
 plt.ylim(-1, 1)
-
+# plt.axes().get_xaxis().set_visible(False)
+# plt.axes().get_yaxis().set_visible(False)
 plt.draw()
 
 while len(rw.x_values) < rw.num_points:
@@ -33,4 +34,7 @@ while len(rw.x_values) < rw.num_points:
         plt.ylim(min(rw.y_values)-5, max(rw.y_values)+5)
 
     fig.canvas.draw()
-    plt.pause(0.1)
+    plt.pause(0.001)
+
+plt.waitforbuttonpress()
+
