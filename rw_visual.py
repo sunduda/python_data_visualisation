@@ -5,7 +5,7 @@ import numpy as np
 
 from random_walk import RandomWalk
 
-rw = RandomWalk(5000)
+rw = RandomWalk(1000)
 
 plt.ion()
 
@@ -34,4 +34,4 @@ while len(rw.x_values) < rw.num_points:
         plt.ylim(min(rw.y_values)-5, max(rw.y_values)+5)
 
     fig.canvas.draw()
-    plt.pause(0.1)
+    #plt.pause(0.001)
