@@ -1,7 +1,7 @@
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 import numpy as np
-import time
+#import time
 
 from random_walk import RandomWalk
 
@@ -10,7 +10,8 @@ rw = RandomWalk(5000)
 plt.ion()
 
 fig, ax = plt.subplots()
-sc = ax.scatter(rw.x_values, rw.y_values, c = [1], cmap = plt.cm.Blues, s = 10)
+cmap = mpl.cm.get_cmap("Blues")
+sc = ax.scatter(rw.x_values, rw.y_values, c = [1], cmap = cmap, s = 10)
 # c = list(range(len(rw.x_values))), cmap = plt.cm.Blues, edgecolor = 'none', s = 10
 
 plt.xlim(-1, 1)
@@ -26,7 +27,7 @@ while len(rw.x_values) < rw.num_points:
         # mapping it to a ScalarMappable, and using that to set the face colour and 
         # c limits on each frame of the animation.
         n = mpl.colors.Normalize(vmin = 1, vmax = len(rw.x_values))
-        m = mpl.cm.ScalarMappable(norm=n, cmap=mpl.cm.Blues)
+        m = mpl.cm.ScalarMappable(norm=n, cmap=cmap)
         sc.set_facecolor(m.to_rgba(list(range(1, len(rw.x_values) + 1))))
 
         plt.xlim(min(rw.x_values)-5, max(rw.x_values)+5)
